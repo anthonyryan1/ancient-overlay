@@ -20,6 +20,8 @@ fi
 LICENSE="ISC"
 SLOT="0"
 
+RDEPEND="net-misc/rsync"
+
 src_prepare() {
 	rm Makefile
 	default

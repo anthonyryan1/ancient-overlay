@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Another (FUSE based) union filesystem"
 HOMEPAGE="https://github.com/trapexit/mergerfs"
-SRC_URI="https://github.com/trapexit/mergerfs/releases/download/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/trapexit/mergerfs/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"

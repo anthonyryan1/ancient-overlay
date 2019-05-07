@@ -22,4 +22,4 @@ ruby_add_bdepend "test? (
 	dev-ruby/simplecov
 )"
 
-ruby_add_rdepend ">=dev-ruby/sass-3.5:*"
+ruby_add_rdepend "dev-ruby/sass"

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Another (FUSE based) union filesystem"
 HOMEPAGE="https://github.com/trapexit/mergerfs"
-SRC_URI="https://github.com/trapexit/mergerfs/releases/download/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/trapexit/mergerfs/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"

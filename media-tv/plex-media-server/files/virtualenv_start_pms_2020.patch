@@ -1,0 +1,13 @@
+--- a/usr/sbin/start_pms	2020-02-24 06:51:19.000000000 -0500
++++ b/usr/sbin/start_pms	2020-03-18 09:20:26.146672270 -0400
+@@ -24,6 +24,9 @@
+ 
+ test -f /etc/default/plexmediaserver && . /etc/default/plexmediaserver
+ 
++# Activate python virtualenv
++. "${PLEX_MEDIA_SERVER_HOME}"/Resources/Python/bin/activate
++
+ # Silently support PLEX_USER if provided as override
+ if [ "$PLEX_USER" != "" ]; then
+   export PLEX_MEDIA_SERVER_USER="$PLEX_USER"
+

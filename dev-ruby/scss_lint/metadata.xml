@@ -3,6 +3,6 @@
 <pkgmetadata>
   <upstream>
     <remote-id type="rubygems">scss_lint</remote-id>
-    <remote-id type="github">brigade/scss-lint</remote-id>
+    <remote-id type="github">sds/scss-lint</remote-id>
   </upstream>
 </pkgmetadata>

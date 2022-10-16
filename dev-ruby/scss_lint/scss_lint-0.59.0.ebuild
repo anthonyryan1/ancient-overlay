@@ -11,7 +11,7 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 inherit ruby-fakegem
 
 DESCRIPTION="Configurable tool for writing clean and consistent SCSS"
-HOMEPAGE="https://github.com/brigade/scss-lint"
+HOMEPAGE="https://github.com/sds/scss-lint"
 LICENSE="MIT"
 
 KEYWORDS="~amd64"

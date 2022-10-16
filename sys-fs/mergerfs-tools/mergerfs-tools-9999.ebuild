@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit python-single-r1
 
@@ -21,7 +21,9 @@ fi
 LICENSE="ISC"
 SLOT="0"
 
-RDEPEND="net-misc/rsync"
+RDEPEND="${PYTHON_DEPS}
+	net-misc/rsync"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_prepare() {
 	rm Makefile

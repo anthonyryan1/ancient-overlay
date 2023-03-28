@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby27"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_EXTRAINSTALL="data config"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"

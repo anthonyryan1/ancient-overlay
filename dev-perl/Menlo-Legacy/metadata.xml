@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<remote-id type="cpan">Menlo-Legacy</remote-id>
+		<!-- https://metacpan.org/dist/Menlo-Legacy#modules -->
+		<remote-id type="cpan-module">Menlo::Legacy</remote-id>
+		<remote-id type="cpan-module">Menlo::CLI::Compat</remote-id>
+	</upstream>
+</pkgmetadata>

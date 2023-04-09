@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<remote-id type="cpan">Menlo</remote-id>
+		<!-- https://metacpan.org/dist/Menlo#modules -->
+		<remote-id type="cpan-module">Menlo::Builder::Static</remote-id>
+		<remote-id type="cpan-module">Menlo::Dependency</remote-id>
+		<remote-id type="cpan-module">Menlo::Index::MetaCPAN</remote-id>
+		<remote-id type="cpan-module">Menlo::Index::MetaDB</remote-id>
+		<remote-id type="cpan-module">Menlo::Index::Mirror</remote-id>
+		<remote-id type="cpan-module">Menlo::Util</remote-id>
+	</upstream>
+</pkgmetadata>

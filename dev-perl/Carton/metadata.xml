@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<remote-id type="cpan">Carton</remote-id>
+		<!-- https://metacpan.org/dist/Carton#modules -->
+		<remote-id type="cpan-module">Carton::Builder</remote-id>
+		<remote-id type="cpan-module">Carton::CLI</remote-id>
+		<remote-id type="cpan-module">Carton::CPANfile</remote-id>
+		<remote-id type="cpan-module">Carton::Dependency</remote-id>
+		<remote-id type="cpan-module">Carton::Dist</remote-id>
+		<remote-id type="cpan-module">Carton::Dist::Core</remote-id>
+		<remote-id type="cpan-module">Carton::Environment</remote-id>
+		<remote-id type="cpan-module">Carton::Error</remote-id>
+		<remote-id type="cpan-module">Carton::Error::CPANfileNotFound</remote-id>
+		<remote-id type="cpan-module">Carton::Error::CommandExit</remote-id>
+		<remote-id type="cpan-module">Carton::Error::CommandNotFound</remote-id>
+		<remote-id type="cpan-module">Carton::Error::SnapshotNotFound</remote-id>
+		<remote-id type="cpan-module">Carton::Error::SnapshotParseError</remote-id>
+		<remote-id type="cpan-module">Carton::Index</remote-id>
+		<remote-id type="cpan-module">Carton::Mirror</remote-id>
+		<remote-id type="cpan-module">Carton::Package</remote-id>
+		<remote-id type="cpan-module">Carton::Packer</remote-id>
+		<remote-id type="cpan-module">Carton::Snapshot</remote-id>
+		<remote-id type="cpan-module">Carton::Snapshot::Emitter</remote-id>
+		<remote-id type="cpan-module">Carton::Snapshot::Parser</remote-id>
+		<remote-id type="cpan-module">Carton::Tree</remote-id>
+		<remote-id type="cpan-module">Carton::Util</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<remote-id type="cpan">HTTP-Tinyish</remote-id>
+		<!-- https://metacpan.org/dist/HTTP-Tinyish#modules -->
+		<remote-id type="cpan-module">HTTP::Tinyish::Base</remote-id>
+		<remote-id type="cpan-module">HTTP::Tinyish::Curl</remote-id>
+		<remote-id type="cpan-module">HTTP::Tinyish::HTTPTiny</remote-id>
+		<remote-id type="cpan-module">HTTP::Tinyish::LWP</remote-id>
+		<remote-id type="cpan-module">HTTP::Tinyish::Wget</remote-id>
+	</upstream>
+</pkgmetadata>

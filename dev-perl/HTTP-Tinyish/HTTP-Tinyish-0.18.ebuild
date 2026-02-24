@@ -24,7 +24,6 @@ DEPEND="
 # $.prereqs.runtime.requires
 RDEPEND="
     dev-perl/File-Which
-    virtual/perl-HTTP-Tiny
     dev-perl/IPC-Run3
 	virtual/perl-parent
 "

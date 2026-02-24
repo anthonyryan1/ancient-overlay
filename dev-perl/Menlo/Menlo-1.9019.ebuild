@@ -40,7 +40,6 @@ RDEPEND="
 	virtual/perl-CPAN-Meta
 	dev-perl/CPAN-Meta-Check
 	virtual/perl-CPAN-Meta-Requirements
-	virtual/perl-CPAN-Meta-YAML
 	dev-perl/Capture-Tiny
 	dev-perl/Class-Tiny
 	virtual/perl-Exporter
@@ -51,7 +50,6 @@ RDEPEND="
 	dev-perl/File-Which
 	dev-perl/File-pushd
 	virtual/perl-Getopt-Long
-	virtual/perl-HTTP-Tiny
 	dev-perl/HTTP-Tinyish
 	virtual/perl-JSON-PP
 	dev-perl/Module-CPANfile

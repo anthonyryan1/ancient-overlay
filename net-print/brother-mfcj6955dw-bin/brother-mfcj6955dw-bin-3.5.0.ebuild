@@ -16,7 +16,7 @@ RESTRICT="mirror strip"
 
 LICENSE="GPL-2+ brother-eula"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+metric"
 
 DEPEND="net-print/cups"

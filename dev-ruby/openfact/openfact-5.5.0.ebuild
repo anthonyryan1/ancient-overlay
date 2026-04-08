@@ -36,7 +36,10 @@ ruby_add_rdepend "
 
 ruby_add_bdepend "test? ( dev-ruby/webmock )"
 
-RDEPEND+=" !dev-ruby/facter"
+RDEPEND+="
+	!dev-ruby/facter
+	!app-admin/puppet-agent
+"
 
 all_ruby_prepare() {
 	sed -e 's/__dir__/"."/' \

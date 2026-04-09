@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>anthonyryan1@gmail.com</email>
+		<name>Anthony Ryan</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Brother brscan5 scanner driver for SANE. Required for USB-connected
+		Brother scanners and provides better quality scanning compared to
+		driverless (airscan) for many network-connected Brother devices.
+	</longdescription>
+	<use>
+		<flag name="gtk">Install brscan_gnetconfig GTK GUI for network scanner configuration</flag>
+	</use>
+</pkgmetadata>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>anthonyryan1@gmail.com</email>
 		<name>Anthony Ryan</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
@@ -14,7 +14,4 @@
 		Brother scanners and provides better quality scanning compared to
 		driverless (airscan) for many network-connected Brother devices.
 	</longdescription>
-	<use>
-		<flag name="gtk">Install brscan_gnetconfig GTK GUI for network scanner configuration</flag>
-	</use>
 </pkgmetadata>

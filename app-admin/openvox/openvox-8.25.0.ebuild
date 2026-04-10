@@ -17,10 +17,10 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 IUSE="augeas diff doc ldap selinux shadow sqlite"
+# Tests require network (localhost HTTPS servers) and unpackaged deps (webmock, vcr, json-schema)
 RESTRICT="test"
 
 ruby_add_rdepend "
-	>=dev-ruby/openfact-5.0
 	dev-ruby/concurrent-ruby
 	dev-ruby/deep_merge
 	dev-ruby/fast_gettext
@@ -28,16 +28,17 @@ ruby_add_rdepend "
 	dev-ruby/hocon
 	dev-ruby/json:=
 	dev-ruby/locale
+	dev-ruby/openfact
 	dev-ruby/ostruct
 	dev-ruby/racc
 	dev-ruby/semantic_puppet
+	virtual/ruby-ssl
 	augeas? ( dev-ruby/ruby-augeas )
 	diff? ( dev-ruby/diff-lcs )
 	doc? ( dev-ruby/rdoc )
 	ldap? ( dev-ruby/ruby-ldap )
 	shadow? ( dev-ruby/ruby-shadow )
 	sqlite? ( dev-ruby/sqlite3 )
-	virtual/ruby-ssl
 "
 
 ruby_add_bdepend "
@@ -50,24 +51,20 @@ ruby_add_bdepend "
 "
 
 RDEPEND+="
-	selinux? (
-		sys-libs/libselinux[ruby]
-		sec-policy/selinux-puppet
-	)
-	>=app-portage/eix-0.18.0
-	acct-user/puppet
 	acct-group/puppet
+	acct-user/puppet
+	>=app-portage/eix-0.18.0
 	!app-admin/puppet
 	!app-admin/puppet-agent
+	selinux? (
+		sec-policy/selinux-puppet
+		sys-libs/libselinux[ruby]
+	)
 "
 
 all_ruby_prepare() {
 	# fix systemd path
 	eapply -p0 "${FILESDIR}/openvox-systemd.patch"
-}
-
-each_ruby_install() {
-	each_fakegem_install
 }
 
 all_ruby_install() {
@@ -94,7 +91,6 @@ all_ruby_install() {
 	fperms 0750 /etc/puppetlabs/puppet
 	fperms 0750 /etc/puppetlabs/puppet/ssl
 	fowners -R :puppet /etc/puppetlabs
-	fowners -R :puppet /var/lib/puppet
 
 	# ext and examples files
 	for f in $(find ext examples -type f) ; do

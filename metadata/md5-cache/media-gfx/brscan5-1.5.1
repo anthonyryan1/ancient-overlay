@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=install postinst postrm unpack
+DESCRIPTION=SANE driver for Brother scanners (brscan5)
+EAPI=8
+HOMEPAGE=https://support.brother.com/
+INHERIT=udev
+IUSE=gtk
+KEYWORDS=~amd64
+LICENSE=Brother
+RDEPEND=media-gfx/sane-backends dev-libs/libusb-compat net-dns/avahi[dbus] gtk? ( x11-libs/gtk+:2 )
+RESTRICT=bindist mirror strip
+SLOT=0
+SRC_URI=https://download.brother.com/welcome/dlf104033/brscan5-1.5.1-0.amd64.deb
+_eclasses_=toolchain-funcs	5195689ff6a73b0e789acfa09d4fbcb9	udev	20c370aff0d0c108f3605c84b3f47084
+_md5_=b4fd4387bb0656db64560df6ea272ec4

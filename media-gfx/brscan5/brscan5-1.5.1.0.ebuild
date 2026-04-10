@@ -26,33 +26,33 @@ RDEPEND="
 QA_PREBUILT="opt/brother/*"
 
 src_install() {
+	local brscan=/opt/brother/scanner/brscan5
+
 	# Install the full Brother scanner tree to /opt
-	insinto /opt/brother/scanner/brscan5
+	insinto ${brscan}
 	doins -r *
 
 	# Mark executables
-	local exe
-	for exe in brsaneconfig5 brscan_cnetconfig setupSaneScan5; do
-		fperms 0755 /opt/brother/scanner/brscan5/${exe}
-	done
+	fperms 0755 ${brscan}/{brsaneconfig5,brscan_cnetconfig,setupSaneScan5}
 
 	# Mark libraries executable
-	find "${ED}"/opt/brother/scanner/brscan5 -name '*.so*' -exec chmod 0755 {} + || die
+	find "${ED}"${brscan} -name '*.so*' -exec chmod 0755 {} + || die
 
 	# Internal Brother libraries are dlopen'd by the SANE backend at runtime.
 	# Make them discoverable via ld.so.conf.d rather than symlinking into /usr/lib64.
-	echo /opt/brother/scanner/brscan5 > "${T}/50-${PN}.conf" || die
 	insinto /etc/ld.so.conf.d
-	doins "${T}/50-${PN}.conf"
+	newins - 50-${PN}.conf <<< ${brscan}
 
-	# SANE backend symlink
-	dosym -r /opt/brother/scanner/brscan5/libsane-brother5.so.1.0.7 \
+	# SANE's dll backend searches only LIBDIR (/usr/lib64/sane/) for backend
+	# .so files via fopen(), ignoring the ld.so cache. This symlink is needed
+	# even with ld.so.conf.d above.
+	# https://gitlab.com/sane-project/backends/-/blob/1.4.0/backend/dll.c#L482
+	dosym -r ${brscan}/libsane-brother5.so.1.0.7 \
 		/usr/lib64/sane/libsane-brother5.so.1
 
 	# SANE dll.d configuration
-	echo "brother5" > "${T}/brother5.conf" || die
 	insinto /etc/sane.d/dll.d
-	doins "${T}/brother5.conf"
+	newins - ${PN} <<< brother5
 
 	# brscan5 configuration
 	insinto /etc/opt/brother/scanner/brscan5
@@ -60,7 +60,7 @@ src_install() {
 	doins brsanenetdevice.cfg
 
 	# User-facing binary symlink
-	dosym -r /opt/brother/scanner/brscan5/brsaneconfig5 /usr/bin/brsaneconfig5
+	dosym -r ${brscan}/brsaneconfig5 /usr/bin/brsaneconfig5
 
 	# udev rules (strip deprecated SYSFS entries, install with clean name)
 	sed -i '/SYSFS/d' udev-rules/NN-brother-mfp-brscan5-1.0.2-2.rules || die
@@ -69,12 +69,22 @@ src_install() {
 
 pkg_postinst() {
 	udev_reload
+
+	# https://bugs.gentoo.org/961463
 	ldconfig
-	elog "For network scanner setup, run as root:"
-	elog "  brsaneconfig5 -a name=SCANNER model=MODEL ip=IP_ADDRESS"
+
+	# HOSTNAME is "BRW" followed by MAC for wi-fi
+	# HOSTNAME is "BRN" followed by MAC for etherent
+	einfo "Your scanner's HOSTNAME can be discovered via avahi:"
+	einfo "  avahi-browse -rt _scanner._tcp"
+	einfo "To connect a network scanner using network discovery:"
+	einfo "  brsaneconfig5 -a name=SCANNER model=MODEL nodename=HOSTNAME.local"
+
 }
 
 pkg_postrm() {
 	udev_reload
+
+	# https://bugs.gentoo.org/961463
 	ldconfig
 }

@@ -28,10 +28,10 @@ else
 fi
 
 ruby_add_rdepend "
-	dev-ruby/hocon
-	<dev-ruby/thor-2.0
 	dev-ruby/ffi
+	dev-ruby/hocon
 	dev-ruby/sys-filesystem
+	<dev-ruby/thor-2.0
 "
 
 ruby_add_bdepend "test? ( dev-ruby/webmock )"

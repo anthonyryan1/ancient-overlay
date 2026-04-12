@@ -71,20 +71,19 @@ pkg_postinst() {
 	udev_reload
 
 	# https://bugs.gentoo.org/961463
-	ldconfig
+	ldconfig -X
 
 	# HOSTNAME is "BRW" followed by MAC for wi-fi
 	# HOSTNAME is "BRN" followed by MAC for etherent
-	einfo "Your scanner's HOSTNAME can be discovered via avahi:"
-	einfo "  avahi-browse -rt _scanner._tcp"
-	einfo "To connect a network scanner using network discovery:"
-	einfo "  brsaneconfig5 -a name=SCANNER model=MODEL nodename=HOSTNAME.local"
-
+	elog "Your scanner's HOSTNAME can be discovered via avahi:"
+	elog "  avahi-browse -rt _scanner._tcp"
+	elog "To connect a network scanner using network discovery:"
+	elog "  brsaneconfig5 -a name=SCANNER model=MODEL nodename=HOSTNAME.local"
 }
 
 pkg_postrm() {
 	udev_reload
 
 	# https://bugs.gentoo.org/961463
-	ldconfig
+	ldconfig -X
 }

@@ -50,8 +50,11 @@ all_ruby_prepare() {
 	sed -e "/require 'bundler/d" -i spec/spec_helper.rb || die
 
 	# dev tasks not needed, but block tests
+	local f
 	for f in tasks/rubocop.rake tasks/check.rake ; do
-		test -e ${f} && mv -f ${f}{,.DISABLE}
+		if [[ -f ${f} ]] ; then
+			mv -f ${f}{,.DISABLE} || die
+		fi
 	done
 
 	# Avoid dependency on simplecov

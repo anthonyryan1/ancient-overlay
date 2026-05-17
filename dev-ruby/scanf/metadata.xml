@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">voxpupuli/json-schema</remote-id>
-		<remote-id type="rubygems">json-schema</remote-id>
+		<remote-id type="github">ruby/scanf</remote-id>
+		<remote-id type="rubygems">scanf</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -14,9 +14,14 @@ Fix: filter openvox entries out of Gem::Specification.stubs before
 requiring puppet, so only the source tree's lib/ (already on $LOAD_PATH
 via rspec) is visible to the autoloader.
 
+Also pre-require 'scanf' so it is already in $LOADED_FEATURES before
+Puppet function definitions are eval'd.  The scanf function's definition
+block calls require 'scanf' inside a class_eval context; pre-loading it
+here ensures it resolves correctly regardless of the eval binding context.
+
 --- a/spec/spec_helper.rb
 +++ b/spec/spec_helper.rb
-@@ -14,3 +14,14 @@ rescue LoadError
+@@ -14,3 +14,20 @@ rescue LoadError
  end
  
 +# Puppet's autoloader searches lib/ dirs of ALL installed gems via
@@ -24,11 +29,17 @@ via rspec) is visible to the autoloader.
 +# gem would otherwise be found alongside the source tree, causing Kernel.load
 +# to define the same constants twice and produce "Indirection already defined".
 +if defined?(Gem)
-+  orig_stubs = Gem::Specification.method(:stubs)
++  original_stubs = Gem::Specification.method(:stubs)
 +  Gem::Specification.define_singleton_method(:stubs) do |*args|
-+    orig_stubs.call(*args).reject { |s| s.name == 'openvox' }
++    original_stubs.call(*args).reject { |spec| spec.name == 'openvox' }
 +  end
 +end
 +
++# Pre-load scanf so require 'scanf' inside Puppet function class_eval works.
++begin
++  require 'scanf'
++rescue LoadError
++end
++
  require 'puppet'
-
+ 

@@ -42,12 +42,13 @@ ruby_add_rdepend "
 ruby_add_bdepend "
 	doc? ( dev-ruby/yard )
 	test? (
-		dev-ruby/json-schema
+		dev-ruby/json-schema:0
 		dev-ruby/mocha
 		dev-ruby/rack
 		dev-ruby/rspec-its
-		dev-ruby/vcr
-		dev-ruby/webmock
+		dev-ruby/vcr:6
+		dev-ruby/webrick
+		dev-ruby/webmock:3
 	)
 "
 
@@ -65,6 +66,7 @@ RDEPEND+="
 
 PATCHES=(
 	"${FILESDIR}/openvox-systemd.patch"
+	"${FILESDIR}/openvox-spec-load-path.patch"
 )
 
 all_ruby_install() {

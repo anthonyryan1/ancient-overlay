@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33"
+USE_RUBY="ruby32 ruby33 ruby34"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_EXTRAINSTALL="locales"
 
@@ -15,10 +15,8 @@ SRC_URI="https://github.com/OpenVoxProject/${PN}/archive/${PV}.tar.gz -> ${P}.ta
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
-IUSE="augeas diff doc ldap selinux shadow sqlite"
-# Tests require network (localhost HTTPS servers) and unpackaged deps (webmock, vcr, json-schema)
-RESTRICT="test"
+KEYWORDS="~amd64"
+IUSE="augeas diff doc ldap selinux shadow sqlite test"
 
 ruby_add_rdepend "
 	dev-ruby/concurrent-ruby
@@ -44,9 +42,12 @@ ruby_add_rdepend "
 ruby_add_bdepend "
 	doc? ( dev-ruby/yard )
 	test? (
+		dev-ruby/json-schema
 		dev-ruby/mocha
 		dev-ruby/rack
 		dev-ruby/rspec-its
+		dev-ruby/vcr
+		dev-ruby/webmock
 	)
 "
 

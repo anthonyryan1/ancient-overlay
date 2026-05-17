@@ -27,13 +27,11 @@ ruby_add_rdepend "
 
 ruby_add_bdepend "test? ( dev-ruby/minitest:5 )"
 
-all_ruby_prepare() {
-	# Remove rubocop and changelog tasks we don't have/need
-	sed -i \
-		-e '/voxpupuli.rubocop/d' \
-		-e '/github_changelog/,/^end$/d' \
-		Rakefile || die
+PATCHES=(
+	"${FILESDIR}/${P}-remove-dev-tasks.patch"
+)
 
+all_ruby_prepare() {
 	# The common test suite requires a git submodule (test/test-suite) that
 	# is not included in the release tarball. Remove it.
 	rm test/common_test_suite_test.rb || die

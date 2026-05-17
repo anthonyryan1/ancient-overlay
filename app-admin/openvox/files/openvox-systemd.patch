@@ -1,5 +1,5 @@
---- ext/systemd/puppet.service.orig	2025-01-01 00:00:00.000000000 +0000
-+++ ext/systemd/puppet.service	2025-01-01 00:00:00.000000000 +0000
+--- a/ext/systemd/puppet.service	2025-01-01 00:00:00.000000000 +0000
++++ b/ext/systemd/puppet.service	2025-01-01 00:00:00.000000000 +0000
 @@ -17,7 +17,7 @@
  EnvironmentFile=-/etc/sysconfig/puppetagent
  EnvironmentFile=-/etc/sysconfig/puppet

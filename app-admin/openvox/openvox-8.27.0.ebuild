@@ -62,10 +62,9 @@ RDEPEND+="
 	)
 "
 
-all_ruby_prepare() {
-	# fix systemd path
-	eapply -p0 "${FILESDIR}/openvox-systemd.patch"
-}
+PATCHES=(
+	"${FILESDIR}/openvox-systemd.patch"
+)
 
 all_ruby_install() {
 	all_fakegem_install
@@ -87,16 +86,15 @@ all_ruby_install() {
 
 	fperms 0750 /var/lib/puppet
 
-	fperms 0750 /etc/puppetlabs
-	fperms 0750 /etc/puppetlabs/puppet
-	fperms 0750 /etc/puppetlabs/puppet/ssl
+	fperms 0750 /etc/puppetlabs{,/puppet,/puppet/ssl}
 	fowners -R :puppet /etc/puppetlabs
 
 	# ext and examples files
-	for f in $(find ext examples -type f) ; do
-		docinto "$(dirname ${f})"
+	local f
+	while IFS= read -r -d '' f ; do
+		docinto "$(dirname "${f}")"
 		dodoc "${f}"
-	done
+	done < <(find ext examples -type f -print0)
 }
 
 pkg_postinst() {

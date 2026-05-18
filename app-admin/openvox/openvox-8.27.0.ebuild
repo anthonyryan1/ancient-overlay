@@ -72,10 +72,10 @@ PATCHES=(
 )
 
 all_ruby_prepare() {
-	# RDoc::Parser#initialize signature changed in rdoc 6.4+ (4 args vs 5);
+	# RDoc::Parser#initialize signature changed in rdoc 6.4+ (4 args vs 5)
 	rm spec/integration/util/rdoc/parser_spec.rb || die
 
-	# puppetserver_gem provider reads /etc/puppetlabs/puppetserver/puppetserver.conf
+	# puppetserver_gem provider tries to read /etc/puppetlabs/puppetserver/puppetserver.conf
 	sed -i '/puppet_gem provider_command.*list local gems/s/^\(\s*\)it /\1xit /' \
 		spec/unit/provider/package/puppetserver_gem_spec.rb || die
 
@@ -91,14 +91,13 @@ all_ruby_install() {
 	all_fakegem_install
 
 	# agent systemd unit
-	systemd_newunit "${WORKDIR}/all/${P}/ext/systemd/puppet.service" \
-		openvox-agent.service
+	systemd_newunit "${WORKDIR}/all/${P}/ext/systemd/puppet.service" openvox.service
 
 	# tmpfiles
 	newtmpfiles "${FILESDIR}"/openvox.tmpfiles puppet.conf
 
 	# agent openrc init
-	newinitd "${FILESDIR}/openvox-agent.init" openvox-agent
+	newinitd "${FILESDIR}/openvox.init" openvox
 
 	keepdir /etc/puppetlabs/puppet/ssl
 

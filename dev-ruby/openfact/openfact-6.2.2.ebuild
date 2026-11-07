@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 RUBY_FAKEGEM_GEMSPEC="openfact.gemspec"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="yard"
@@ -26,8 +26,6 @@ SLOT="0"
 
 ruby_add_bdepend "test? ( dev-ruby/webmock )"
 
-# ffi and sys-filesystem are development dependencies upstream (to allow
-# installing without a compiler), but several resolvers need them at runtime.
 ruby_add_rdepend "
 	dev-ruby/ffi
 	dev-ruby/hocon
